@@ -1,0 +1,50 @@
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "defi"
+  password: "defi_secret"
+  dbname: "defi_lending"
+  max_open_conns: 25
+  max_idle_conns: 5
+  conn_max_lifetime: "5m"
+
+redis:
+  addr: "localhost:6379"
+  password: ""
+  db: 0
+
+kafka:
+  brokers:
+    - "localhost:9092"
+  topics:
+    chain_events: "chain.events"
+    price_updates: "price.updates"
+    notifications: "notifications"
+
+chains:
+  - name: "ethereum"
+    chain_id: 1
+    rpc_urls:
+      - "https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY"
+    ws_url: "wss://eth-mainnet.g.alchemy.com/v2/YOUR_KEY"
+    block_time: 12
+    confirmations: 12
+    contracts:
+      lending_pool: "0x0000000000000000000000000000000000000000"
+  - name: "arbitrum"
+    chain_id: 42161
+    rpc_urls:
+      - "https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY"
+    ws_url: "wss://arb-mainnet.g.alchemy.com/v2/YOUR_KEY"
+    block_time: 1
+    confirmations: 1
+    contracts:
+      lending_pool: "0x0000000000000000000000000000000000000000"
+
+log:
+  level: "info"
+  format: "json"

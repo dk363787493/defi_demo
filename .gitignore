@@ -1,0 +1,15 @@
+# Build
+*.exe
+*.out
+/indexer
+
+# IDE
+.idea/
+.vscode/
+
+# Env
+.env
+configs/config.local.yaml
+
+# OS
+.DS_Store
