@@ -8,6 +8,7 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/zhangjinge/defi-lending-backend/internal/account"
 	"github.com/zhangjinge/defi-lending-backend/internal/api/middleware"
+	ws "github.com/zhangjinge/defi-lending-backend/internal/api/websocket"
 	"github.com/zhangjinge/defi-lending-backend/internal/market"
 )
 
@@ -15,6 +16,7 @@ import (
 type RouterConfig struct {
 	MarketHandler  *market.Handler
 	AccountHandler *account.Handler
+	WSHandler      *ws.Handler
 	Logger         zerolog.Logger
 	RateLimitCfg   middleware.RateLimitConfig
 }
@@ -49,6 +51,9 @@ func NewRouter(cfg RouterConfig) *gin.Engine {
 	}
 	if cfg.AccountHandler != nil {
 		cfg.AccountHandler.RegisterRoutes(v1)
+	}
+	if cfg.WSHandler != nil {
+		cfg.WSHandler.RegisterRoutes(v1)
 	}
 
 	return r
