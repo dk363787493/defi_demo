@@ -1,14 +1,24 @@
-# Build
-*.exe
-*.out
+# Binaries
+bin/
+/api
 /indexer
+/liquidator
+/worker
+*.exe
+
+# Test artifacts
+coverage.out
+coverage.html
+*.test
 
 # IDE
 .idea/
 .vscode/
+*.swp
 
 # Env
 .env
+.env.local
 configs/config.local.yaml
 
 # OS
