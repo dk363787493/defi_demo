@@ -25,18 +25,18 @@ const (
 
 // LiquidationTx represents a liquidation transaction in flight.
 type LiquidationTx struct {
-	TxHash           common.Hash
-	Borrower         common.Address
-	DebtAsset        common.Address
-	CollateralAsset  common.Address
-	DebtAmount       *big.Int
-	Status           TxStatus
-	GasUsed          uint64
-	GasPrice         *big.Int
-	Profit           *big.Int
-	SubmittedAt      time.Time
-	ConfirmedAt      time.Time
-	RetryCount       int
+	TxHash          common.Hash
+	Borrower        common.Address
+	DebtAsset       common.Address
+	CollateralAsset common.Address
+	DebtAmount      *big.Int
+	Status          TxStatus
+	GasUsed         uint64
+	GasPrice        *big.Int
+	Profit          *big.Int
+	SubmittedAt     time.Time
+	ConfirmedAt     time.Time
+	RetryCount      int
 }
 
 // ChainSender abstracts on-chain transaction operations.
@@ -54,13 +54,13 @@ type TxSigner interface {
 
 // Config holds executor configuration.
 type Config struct {
-	ChainID         *big.Int
-	LendingPool     common.Address
-	MinProfitWei    *big.Int       // minimum profit to execute liquidation
-	MaxGasPrice     *big.Int       // gas price cap
-	GasLimit        uint64         // gas limit for liquidation tx
-	MaxRetries      int
-	RetryBaseDelay  time.Duration
+	ChainID        *big.Int
+	LendingPool    common.Address
+	MinProfitWei   *big.Int // minimum profit to execute liquidation
+	MaxGasPrice    *big.Int // gas price cap
+	GasLimit       uint64   // gas limit for liquidation tx
+	MaxRetries     int
+	RetryBaseDelay time.Duration
 }
 
 // Executor builds, signs, submits, and tracks liquidation transactions.
